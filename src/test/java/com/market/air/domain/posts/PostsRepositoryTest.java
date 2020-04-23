@@ -32,7 +32,6 @@ public class PostsRepositoryTest {
         postsRepository.save(Posts.builder()
         .title(title)
         .content(content)
-        .author("author1")
         .build());
 
         List<Posts> postsList = postsRepository.findAll();

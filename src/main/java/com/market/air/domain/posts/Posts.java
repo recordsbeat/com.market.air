@@ -1,11 +1,15 @@
 package com.market.air.domain.posts;
 
+import com.market.air.domain.user.Users;
+import com.market.air.domain.vo.ContactInfo;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.*;
 
+@ToString
 @Getter
 @NoArgsConstructor
 @Entity
@@ -20,13 +24,22 @@ public class Posts {
     @Column(columnDefinition = "TEXT" , nullable = false)
     private String content;
 
-    private String author;
+    @ManyToOne
+    private Users users;
+
+    @Embedded
+    private ContactInfo contactInfo;
+
 
     @Builder
-    public Posts(Long id, String title, String content, String author) {
+    public Posts(Long id, String title, String content, ContactInfo contactInfo) {
         this.id = id;
         this.title = title;
         this.content = content;
-        this.author = author;
+        this.contactInfo = contactInfo;
+    }
+
+    public void putUser(Users users){
+        this.users = users;
     }
 }

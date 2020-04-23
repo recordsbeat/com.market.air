@@ -46,7 +46,7 @@ public class PostApiControllerTest {
         PostsSaveRequestDto requestDto = PostsSaveRequestDto.builder()
                 .title(title)
                 .content(content)
-                .author("author")
+                //.author("author")
                 .build();
         String url = "http://localhost:" + port + "/api/v1/posts";
 
